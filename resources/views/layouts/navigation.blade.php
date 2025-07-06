@@ -35,14 +35,14 @@
                             <x-nav-link :href="route('admin.pizzas.create')" :active="request()->routeIs('admin.pizzas.create')">
                                 {{ __('Add Pizza') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('admin.create')" :active="request()->routeIs('admin.create')">
-                                {{ __('Create Admin') }}
-                            </x-nav-link>
                             <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                                 {{ __('Manage Users') }}
                             </x-nav-link>
-                        @endif
-                    @endauth
+                            @endif
+                            @endauth
+                    <x-nav-link :href="route('admin.create')" :active="request()->routeIs('admin.create')">
+                        {{ __('Create Admin') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -122,14 +122,14 @@
                     <x-responsive-nav-link :href="route('admin.pizzas.create')" :active="request()->routeIs('admin.pizzas.create')">
                         {{ __('Add Pizza') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('admin.create')" :active="request()->routeIs('admin.create')">
-                        {{ __('Create Admin') }}
-                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.index')">
                         {{ __('Manage Users') }}
                     </x-responsive-nav-link>
-                @endif
-            @endauth
+                    @endif
+                    @endauth
+            <x-responsive-nav-link :href="route('admin.create')" :active="request()->routeIs('admin.create')">
+                {{ __('Create Admin') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

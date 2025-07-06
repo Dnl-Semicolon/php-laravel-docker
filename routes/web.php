@@ -70,7 +70,7 @@ Route::get('/404', function () {
     return view('errors/404');
 });
 
-Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/users', [AdminUserManagementController::class, 'index'])->name('admin.users.index');
 });
 
