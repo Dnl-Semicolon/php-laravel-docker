@@ -61,7 +61,7 @@ Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
     Route::post('/admin/orders/{id}/status', [AdminOrderController::class, 'updateStatus'])->name('admin.orders.updateStatus');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'is_admin'])->group(function () {
     Route::get('/admin/create', [AdminUserController::class, 'create'])->name('admin.create');
     Route::post('/admin/create', [AdminUserController::class, 'store'])->name('admin.store');
 });
