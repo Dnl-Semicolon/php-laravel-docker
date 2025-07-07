@@ -4,6 +4,7 @@
             {{ __('All Orders') }}
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -22,6 +23,26 @@
                                         <p class="text-sm text-gray-600">
                                             Ordered on: <span class="font-medium">{{ $order->created_at->format('M d, Y \a\t h:i A') }}</span>
                                         </p>
+                                        @if($order->full_name)
+                                            <p class="text-sm text-gray-600">
+                                                Delivery to: <span class="font-medium">{{ $order->full_name }}</span>
+                                            </p>
+                                        @endif
+                                        @if($order->phone)
+                                            <p class="text-sm text-gray-600">
+                                                Phone: <span class="font-medium"><a href="tel:{{ $order->phone }}" class="text-blue-600 hover:text-blue-800">{{ $order->phone }}</a></span>
+                                            </p>
+                                        @endif
+                                        @if($order->total_price ?? false)
+                                            <p class="text-sm text-gray-600">
+                                                Total: <span class="font-bold text-green-600">${{ number_format($order->total_price, 2) }}</span>
+                                            </p>
+                                        @endif
+                                        @if($order->updated_at != $order->created_at)
+                                            <p class="text-sm text-gray-600">
+                                                Last updated: <span class="font-medium">{{ $order->updated_at->format('M d, Y \a\t h:i A') }}</span>
+                                            </p>
+                                        @endif
                                     </div>
                                     <div class="text-right">
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-2
@@ -33,6 +54,26 @@
                                         </span>
                                     </div>
                                 </div>
+
+                                <!-- Delivery Address (if available) -->
+                                @if($order->address_line1)
+                                    <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">
+                                        <h4 class="font-medium text-gray-900 mb-2 flex items-center">
+                                            <svg class="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                            Delivery Address
+                                        </h4>
+                                        <div class="text-sm text-gray-600">
+                                            <p>{{ $order->address_line1 }}</p>
+                                            @if($order->address_line2)
+                                                <p>{{ $order->address_line2 }}</p>
+                                            @endif
+                                            <p>{{ $order->city }}, {{ $order->state }} {{ $order->postal_code }}</p>
+                                        </div>
+                                    </div>
+                                @endif
 
                                 <!-- Status Update Form -->
                                 <div class="bg-white rounded-lg border border-gray-200 p-4 mb-4">

@@ -10,7 +10,8 @@ class Pizza extends Model
         'name',
         'description',
         'price',
-        'is_available'
+        'is_available',
+        'image',
     ];
 
     public function orderItems() {

@@ -35,7 +35,14 @@ Route::post('/pizzas/{id}/buy', [PizzaController::class, 'buy'])
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/cart/add/{pizza}', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
+    Route::get('/checkout/address', [CartController::class, 'addressForm'])->name('checkout.address');
+    Route::post('/checkout/address', [CartController::class, 'processAddress'])->name('checkout.processAddress');
     Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+//    Route::get('/checkout', function () {
+//        return redirect()->route('cart.show')->with('error', 'Please fill in your address before checkout.');
+//    });
+
+    Route::get('/checkout/success', [CartController::class, 'checkoutSuccess'])->name('checkout.success');
     Route::post('/cart/update/{pizza}', [CartController::class, 'updateQuantity'])->name('cart.update');
     Route::post('/cart/remove/{pizza}', [CartController::class, 'removeItem'])->name('cart.remove');
     Route::post('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');

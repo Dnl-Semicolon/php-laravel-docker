@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
-                <div class="p-8">
+                <div class="p-6">
                     @if (count($cart) === 0)
                         <!-- Empty Cart State -->
                         <div class="text-center py-12">
@@ -135,15 +135,22 @@
                                 </form>
 
                                 <!-- Checkout Button -->
-                                <form action="{{ route('checkout') }}" method="POST" class="inline-block">
-                                    @csrf
-                                    <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors shadow-md hover:shadow-lg">
-                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        Proceed to Checkout
-                                    </button>
-                                </form>
+{{--                                <form action="{{ route('checkout.address') }}" method="POST" class="inline-block">--}}
+{{--                                    @csrf--}}
+{{--                                    <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors shadow-md hover:shadow-lg">--}}
+{{--                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">--}}
+{{--                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>--}}
+{{--                                        </svg>--}}
+{{--                                        Proceed to Checkout--}}
+{{--                                    </button>--}}
+{{--                                </form>--}}
+                                <!-- Checkout Button -->
+                                <a href="{{ route('checkout.address') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors shadow-md hover:shadow-lg">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Proceed to Checkout
+                                </a>
                             </div>
                         </div>
                     @endif

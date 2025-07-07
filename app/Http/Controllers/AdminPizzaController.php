@@ -18,10 +18,22 @@ class AdminPizzaController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_available' => 'required|boolean'
         ]);
 
-        Pizza::create($request->only('name', 'description', 'price', 'is_available'));
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('pizzas', 'public');
+        }
+
+        Pizza::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'is_available' => $request->has('is_available'),
+            'image' => $imagePath,
+        ]);
 
         return redirect()->route('pizzas.index')->with('success', 'Pizza added successfully!');
     }
