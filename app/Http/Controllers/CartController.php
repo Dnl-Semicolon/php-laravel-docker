@@ -119,8 +119,8 @@ class CartController extends Controller
 
         session(['checkout_address' => $validated]);
 
-//        return redirect()->route('checkout'); // this POSTs to Stripe session as before
-        return view('checkout.confirm');
+        return redirect()->route('checkout'); // this POSTs to Stripe session as before
+        // return view('checkout.confirm');
     }
 
 

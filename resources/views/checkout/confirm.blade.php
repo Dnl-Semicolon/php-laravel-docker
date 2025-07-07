@@ -9,6 +9,14 @@
     </div>
 
     <script>
+        // wait a few seconds
+        setTimeout(() => {
+            // If the form is still hidden, show it
+            const form = document.getElementById('checkout-form');
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+            }
+        }, 2000);
         document.getElementById('checkout-form').submit();
     </script>
 </x-app-layout>

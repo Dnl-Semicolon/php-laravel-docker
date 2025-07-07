@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/cart', [CartController::class, 'show'])->name('cart.show');
     Route::get('/checkout/address', [CartController::class, 'addressForm'])->name('checkout.address');
     Route::post('/checkout/address', [CartController::class, 'processAddress'])->name('checkout.processAddress');
-    Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 //    Route::get('/checkout', function () {
 //        return redirect()->route('cart.show')->with('error', 'Please fill in your address before checkout.');
 //    });
