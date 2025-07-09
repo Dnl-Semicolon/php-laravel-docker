@@ -11,9 +11,39 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PizzaController;
 use Illuminate\Support\Facades\Route;
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+// Landing page
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('mobius.home');
+})->name('home');
+
+// Static pages
+Route::get('/about', function () {
+    return view('mobius.about');
+})->name('about');
+
+Route::get('/features', function () {
+    return view('mobius.features');
+})->name('features');
+
+Route::get('/gallery', function () {
+    return view('mobius.gallery');
+})->name('gallery');
+
+Route::get('/impact', function () {
+    return view('mobius.impact');
+})->name('impact');
+
+Route::get('/team', function () {
+    return view('mobius.team');
+})->name('team');
+
+Route::get('/contact', function () {
+    return view('mobius.contact');
+})->name('contact');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
